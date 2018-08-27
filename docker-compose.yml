@@ -40,14 +40,22 @@ services:
       - 4444:4444
       - 5900:5900
 
-  ## Composer command-line utility
-  composer:
-    image: composer
+  ## Task running environment setting
+  task:
+    build: ./docker/task
     volumes:
-      - ./:/app
+      - ./:/task
+
+  ## Behat command-line utility
+  composer:
+    entrypoint: composer
+    extends:
+      service: task
 
   ## Behat command-line utility
   behat:
-    entrypoint: /app/vendor/bin/behat
+    entrypoint: ./vendor/bin/behat
     extends:
-      service: composer
+      service: task
+    links:
+      - selenium

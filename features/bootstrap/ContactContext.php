@@ -9,7 +9,7 @@ use Behat\MinkExtension\Context\MinkContext;
 /**
  * Defines application features from the specific context.
  */
-class BaseContext extends MinkContext implements Context
+class ContactContext extends CommonContext
 {
     /**
      * Initializes context.
@@ -20,21 +20,5 @@ class BaseContext extends MinkContext implements Context
      */
     public function __construct()
     {
-    }
-
-    /**
-     * @Given I wait until the page loads
-     */
-    public function iWaitUntilThePageLoads()
-    {
-        //sleep(4);
-    }
-
-    /**
-     * @Then I see the message :arg1
-     */
-    public function iSeeTheMessage($arg1)
-    {
-        return;
     }
 }

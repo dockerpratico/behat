@@ -1,12 +1,9 @@
-##
-## Behat
-##
-
+## Behat by Francesco Bianco <bianco@javanile.org>
 default:
+
   suites:
-    Auth:
-      paths:    [ '%paths.base%/features/suites/Auth']
-      contexts: [ 'AuthContext' ]
+    Auth:    { contexts: [ 'AuthContext' ] }
+    Contact: { contexts: [ 'ContactContext' ] }
 
   extensions:
     Behat\MinkExtension:
