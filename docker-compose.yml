@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  keystone:
+    image: mahnunchik/keystonejs
+    environment:
+      - MONGO_PORT_27017_TCP_ADDR=mongo
+      - MONGO_PORT_27017_TCP_PORT=27017
+      - CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+    ports:
+      - 8888:8080
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
+
+  novnc:
+    image: javanile/novnc
+    environment:
+      - REMOTE_HOST=localhost
+      - REMOTE_PORT=5900
+    ports:
+      - 8081:8081
+    links:
+      - selenium
+
+  selenium:
+    image: selenium/standalone-chrome-debug:3.11.0-californium
+    environment:
+      - VNC_NO_PASSWORD=1
+      - SCREEN_WIDTH=1200
+      - SCREEN_HEIGHT=675
+    ports:
+      - 4444:4444
+      - 5900:5900
