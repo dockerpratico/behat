@@ -5,15 +5,13 @@
 default:
   suites:
     Auth:
-      paths:
-        - %paths.base%/features/suites/Auth
-      contexts:
-        - AuthContext
+      paths:    [ '%paths.base%/features/suites/Auth']
+      contexts: [ 'AuthContext' ]
 
   extensions:
     Behat\MinkExtension:
       browser_name: chrome
       default_session: selenium2
-      base_url: http://behat.testing
+      base_url: http://keystone:8080
       selenium2:
         wd_host: http://selenium:4444/wd/hub
